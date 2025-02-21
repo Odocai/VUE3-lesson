@@ -32,24 +32,24 @@
             // activeEffect = this
             // activeEffect = lastEffect
 
-			effect(() => {
-				//f1
-				console.log(state.name);
+			// effect(() => {
+			// 	//f1
+			// 	console.log(state.name);
 
-				effect(() => {
-					//f2
-					console.log(state.name);
-				});
+			// 	effect(() => {
+			// 		//f2
+			// 		console.log(state.name);
+			// 	});
 
-                console.log(state.age);
-			});
+            //     console.log(state.age);
+			// });
 
-			// effect(()=>{
-			//     app.innerHTML = `姓名：${state.name}，年龄：${state.age}`
-			// })
-			// setTimeout(()=>{
-			//     state.age ++;
-			// },1000)
+			effect(()=>{
+			    app.innerHTML = `姓名：${state.name}，年龄：${state.age}`
+			})
+			setTimeout(()=>{
+			    state.age ++;
+			},1000)
 		</script>
 	</body>
 </html>

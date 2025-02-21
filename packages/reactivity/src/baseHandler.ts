@@ -12,10 +12,10 @@ export const mutableHandlers: ProxyHandler<any> = {
         }
 
         // 取值的时候 应该让 响应式属性 和 effect 映射起来
-
-
         // 依赖收集
-        console.log(activeEffect,key)
+        // console.log(activeEffect,key)
+        track(target,key); // 收集这个对象上的这个属性 和effect关联在一起
+
         return Reflect.get(target,key, recevier);
     },
 

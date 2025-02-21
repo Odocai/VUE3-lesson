@@ -40,7 +40,7 @@ var mutableHandlers = {
     if (key === "__v_isReactive" /* IS_REACTIVE */) {
       return true;
     }
-    console.log(activeEffect, key);
+    track(target, key);
     return Reflect.get(target, key, recevier);
   },
   set(target, key, value, recevier) {
