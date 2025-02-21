@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<!-- <script src="/node_modules/@vue/reactivity/dist/reactivity.esm-browser.js"></script> -->
+		<script type="module">
+			// 原生
+			// import {reactive, effect} from '/node_modules/@vue/reactivity/dist/reactivity.esm-browser.js'
+
+			import { reactive, effect } from './reactivity.js';
+			// reactive 让数据变成响应式
+			// effect 副作用 数据改变后可以让effect重新执行
+			// 组件  Watch computed都是基于effect来实现的
+			// console.log(reactive({name:'odocai',age: 32}))
+			let obj = { name: 'odocai', age: 32 };
+
+			// 避免同一个对象被重复代理
+			// 屏蔽反复代理
+			// const state1 = reactive(obj);
+			// const state2 = reactive(state1);
+
+			// console.log(state1 === state2)
+
+			const state = reactive(obj);
+
+            // let lastEffect = activeEffect
+            // activeEffect = this
+            // activeEffect = lastEffect
+
+			effect(() => {
+				//f1
+				console.log(state.name);
+
+				effect(() => {
+					//f2
+					console.log(state.name);
+				});
+
+                console.log(state.age);
+			});
+
+			// effect(()=>{
+			//     app.innerHTML = `姓名：${state.name}，年龄：${state.age}`
+			// })
+			// setTimeout(()=>{
+			//     state.age ++;
+			// },1000)
+		</script>
+	</body>
+</html>
